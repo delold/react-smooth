@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 function shallowEqual(objA, objB) {
   if (objA === objB) {
     return true;
@@ -24,18 +22,7 @@ function shallowEqual(objA, objB) {
       continue;
     }
 
-    // special diff with Array or Object
-    if (_.isArray(objA[keyA])) {
-      if (!_.isArray(objB[keyA]) || objA[keyA].length !== objB[keyA].length) {
-        return false;
-      } else if (!_.isEqual(objA[keyA], objB[keyA])) {
-        return false;
-      }
-    } else if (_.isPlainObject(objA[keyA])) {
-      if (!_.isPlainObject(objB[keyA]) || !_.isEqual(objA[keyA], objB[keyA])) {
-        return false;
-      }
-    } else if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
+    if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
       return false;
     }
   }

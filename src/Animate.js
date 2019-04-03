@@ -2,7 +2,7 @@ import React, { Component, cloneElement, Children } from 'react';
 import PropTypes from 'prop-types';
 import createAnimateManager from './AnimateManager';
 import pureRender from './PureRender';
-import _ from 'lodash';
+import { isEqual } from 'lodash';
 import { configEasing } from './easing';
 import configUpdate from './configUpdate';
 import { getTransitionVal, identity, translateStyle } from './util';
@@ -120,7 +120,7 @@ class Animate extends Component {
 
     const animateProps = ['to', 'canBegin', 'isActive'];
 
-    if (_.isEqual(this.props.to, nextProps.to) && this.props.canBegin && this.props.isActive) {
+    if (isEqual(this.props.to, nextProps.to) && this.props.canBegin && this.props.isActive) {
       return;
     }
 
